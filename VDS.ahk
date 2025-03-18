@@ -3,6 +3,7 @@
 
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+#NoTrayIcon
 
 ; Global variables
 global DesktopCount := 1
@@ -108,7 +109,7 @@ switchDesktopByNumber(targetDesktop) {
     mapDesktopsFromRegistry()
 }
 
-#^Tab:: {
+#!Tab:: {
     global wrapAroundEnabled, pingPongDirection, DesktopCount, CurrentDesktop
     mapDesktopsFromRegistry()
     
@@ -136,8 +137,8 @@ switchDesktopByNumber(targetDesktop) {
     }
 }
 
-; Toggle mode with Win+Alt+Tab
-#!Tab:: {
+; Toggle mode with Win+Ctrl+Tab
+#^Tab:: {
     global wrapAroundEnabled
     wrapAroundEnabled := !wrapAroundEnabled
     Tooltip("Mode: " (wrapAroundEnabled ? "Wrap-around" : "Ping-pong"))
